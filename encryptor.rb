@@ -12,7 +12,13 @@ class Encryptor
 
   def encrypt(letter)
     letter.split("").collect do |e|
-       cipher[e.downcase].join
+       cipher[e.downcase]
     end
+  end
+
+  def decrypt(letter)
+      letter.split("").collect do |d|
+        cipher[d.downcase]
+      end
   end
 end
