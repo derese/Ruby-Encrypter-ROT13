@@ -11,6 +11,8 @@ class Encryptor
   end
 
   def encrypt(letter)
-    cipher[letter];
+    letter.split("").collect do |e|
+       cipher[e.downcase].join
+    end
   end
 end
