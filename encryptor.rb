@@ -21,4 +21,19 @@ class Encryptor
         cipher[d.downcase]
       end
   end
+
+  def cipher_new(rot)
+    ch = (' '..'z').to_a
+    rotated_ch = ch.rotate(rot)
+    Hash[ch.zip(rotated_ch)]
+  end
+  def encrypt_decrypt_all(letter,rotation)
+    #this code replaces cipher and encrypt
+      cip = cipher_new(rotation)
+      arr = []
+      letter.split("").collect! do |l|
+        cip[l]
+      end
+
+  end
 end
