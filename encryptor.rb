@@ -15,13 +15,11 @@ class Encryptor
        cipher[e.downcase]
     end
   end
-
   def decrypt(letter)
       letter.split("").collect do |d|
         cipher[d.downcase]
       end
   end
-
   def cipher_new(rot)
     ch = (' '..'z').to_a
     rotated_ch = ch.rotate(rot)
@@ -34,6 +32,17 @@ class Encryptor
       letter.split("").collect! do |l|
         cip[l]
       end
-
+  end
+  def encryptfile(filename,encrypt,rotate)
+    input = File.open(filename,"r")
+    file_content = input.read
+    input.close
+    if encrypt
+    output = File.open(filename + '.encrypted','w')
+    else
+    output = File.open(filename + '.decrypt','w')
+    end
+    output.write(encrypt_decrypt_all(file_content,rotate).join)
+    output.close
   end
 end
