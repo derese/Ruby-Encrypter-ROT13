@@ -23,6 +23,12 @@ class Encryptor
   def cipher_new(rot)
     ch = (' '..'z').to_a
     rotated_ch = ch.rotate(rot)
+    #get the list of letters reshuffled
+    #insert them back
+    #delete the old
+    adj_rot = rotated_ch.slice(-1*rot,rotated_ch.size())
+    rotated_ch.slice!(-1*rot,rotated_ch.size())
+    rotated_ch.insert(rot,adj_rot).flatten!
     Hash[ch.zip(rotated_ch)]
   end
   def encrypt_decrypt_all(letter,rotation)
